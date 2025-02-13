@@ -19,7 +19,7 @@ This repository contains solutions for six common linked list problems in C++. T
    Reverses the portion of the list between two given positions (`left` and `right`).
 
 5. **Detect Cycle in a Linked List**  
-   Detects whether a linked list contains a cycle using Floyd’s Cycle-Finding algorithm.
+   Detects whether a linked list contains a cycle.
 
 6. **Remove Duplicates from Sorted List**  
    Removes duplicate values from a sorted linked list.
