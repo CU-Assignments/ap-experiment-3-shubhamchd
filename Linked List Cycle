@@ -1,0 +1,29 @@
+#Aim:
+To detect if a linked list has a cycle.
+
+##Objectives:
+
+Check if the list is empty or has only one node (no cycle).
+Use two pointers: slow moves one step at a time, and fast moves two steps.
+Traverse the list, comparing slow and fast pointers to check for a cycle.
+Return true if a cycle is detected, otherwise return false.
+
+###Code
+class Solution {
+public:
+    bool hasCycle(ListNode* head) {
+        if (head == NULL || head->next == NULL) {
+            return false;
+        }
+        ListNode* slow = head;
+        ListNode* fast = head->next;
+        while (fast != slow) {
+            if (fast->next == NULL || fast->next->next == NULL) {
+                return false;
+            }
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return true;
+    }
+};
