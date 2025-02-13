@@ -1,0 +1,29 @@
+#Aim:
+To remove all duplicate values from a sorted linked list.
+
+##Objectives:
+
+Create a dummy node and set prev to point to it.
+Traverse the list, skipping over consecutive nodes with the same value.
+If duplicates are found, adjust prev to skip them.
+Return the head of the modified linked list.
+
+###Code
+class Solution {
+ public:
+  ListNode* deleteDuplicates(ListNode* head) {
+    ListNode dummy(0, head);
+    ListNode* prev = &dummy;
+    while (head) {
+      while (head->next && head->val == head->next->val)
+        head = head->next;
+      if (prev->next == head)
+        prev = prev->next;
+      else
+        prev->next = head->next;
+      head = head->next;
+    }
+
+    return dummy.next;
+  }
+};
