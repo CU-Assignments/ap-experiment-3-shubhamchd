@@ -1,0 +1,40 @@
+#Aim:
+To combine k sorted linked lists into one sorted linked list.
+
+##Objectives:
+
+Collect all values from the linked lists into a priority queue.
+Take the smallest value from the queue and create a new node.
+Link the new nodes to form a sorted list.
+Return the head of the merged sorted list.
+
+###Code
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        int n=lists.size();
+        priority_queue<int,vector<int>,greater<int>>q;
+        for(int i=0;i<n;i++){
+            ListNode* temp=lists[i];
+            while(temp!=NULL){
+                q.push(temp->val);
+                temp=temp->next;
+            }
+        }
+        if(!q.empty()){
+        ListNode* ans=new ListNode(q.top());
+        q.pop();
+        ListNode* tempp=ans;
+        while(!q.empty()){
+            int temp=q.top();
+            q.pop();
+            tempp->next=new ListNode(temp);
+           if(tempp->next!=NULL) tempp=tempp->next;
+            
+        }
+        return ans;
+        }
+        else return NULL;
+        
+    }
+};
